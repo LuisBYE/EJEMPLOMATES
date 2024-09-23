@@ -19,13 +19,14 @@ public class NuevoJugador : MonoBehaviour
         float direccionIndicadaX = Input.GetAxisRaw("Horizontal");
         float direccionIndicadaY = Input.GetAxisRaw("Vertical");
         //Debug.Log("X :" + direccionIndicadaX + " - Y: " + direccionIndicadaY);
-        Vector2 direccionIndicada = new Vector2(direccionIndicadaX, direccionIndicadaY);
+        Vector2 direccionIndicada = new Vector2(direccionIndicadaX, direccionIndicadaY).normalized;
         
         Vector2 navePos = transform.position;// posicion actual de la mavae con transfomr.position
         navePos = navePos + direccionIndicada * _velocidad * Time.deltaTime;
         //Debug.Log(Time.deltaTime); //
 
         transform.position = navePos;
+        
 
     }
 }
