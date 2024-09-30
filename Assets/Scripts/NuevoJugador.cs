@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class NuevoJugador : MonoBehaviour
 {
-
+    //VARIABLES
     private float _velocidad;
     private Vector2 minPantalla;
     private Vector2 maxPantalla;
+
+    [SerializeField] private GameObject prefabProyectil;
 
     // Start is called before the first frame update
     void Start()
@@ -34,23 +36,40 @@ public class NuevoJugador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        moureNave();
+
+        DisparaProyectil();
+        
+        
+    }
+    private  void moureNave() // CARACTERISTICAS DE MOVIIENTO DE NAVE
+    {
         float direccionIndicadaX = Input.GetAxisRaw("Horizontal");
         float direccionIndicadaY = Input.GetAxisRaw("Vertical");
 
         //Debug.Log("X :" + direccionIndicadaX + " - Y: " + direccionIndicadaY);
 
         Vector2 direccionIndicada = new Vector2(direccionIndicadaX, direccionIndicadaY).normalized;
-        
+
         Vector2 navePos = transform.position;// posicion actual de la mavae con transfomr.position
         navePos = navePos + direccionIndicada * _velocidad * Time.deltaTime;
         //Debug.Log(Time.deltaTime); //
 
         //BORDES DE PANTALLA 
-        navePos.x = Mathf.Clamp(navePos.x , minPantalla.x, maxPantalla.x);
+        navePos.x = Mathf.Clamp(navePos.x, minPantalla.x, maxPantalla.x);
         navePos.y = Mathf.Clamp(navePos.y, minPantalla.y, maxPantalla.y);
 
         transform.position = navePos;
-        
-        
+    }
+
+    private void DisparaProyectil()
+    {
+        if (Input.GetKeyDown("space")) // SI SE PRESIONA ESPACIO 
+        {
+            GameObject proyectil= Instantiate(prefabProyectil);
+            proyectil.transform.position = transform.position;
+        }
+
     }
 }
