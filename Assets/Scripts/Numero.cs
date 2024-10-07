@@ -11,6 +11,7 @@ public class Numero : MonoBehaviour
 
 
     [SerializeField] private Sprite[] arraySpritesNumeros = new  Sprite[10];
+    [SerializeField] private GameObject prefabExplocion;
 
     private int valorNumero;
 
@@ -38,6 +39,17 @@ public class Numero : MonoBehaviour
         if (transform.position.y < minPantalla.y)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D objecteTocat)
+    {
+        if (objecteTocat.tag == "Jugador" || objecteTocat.tag == "projectilJugador")
+        {
+            GameObject explocio = Instantiate(prefabExplocion);
+            explocio.transform.position = transform.position;
+            Destroy(gameObject);
+
         }
     }
 }

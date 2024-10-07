@@ -10,6 +10,7 @@ public class NuevoJugador : MonoBehaviour
     private Vector2 maxPantalla;
 
     [SerializeField] private GameObject prefabProyectil;
+    [SerializeField] private GameObject prefabExplocion;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +64,8 @@ public class NuevoJugador : MonoBehaviour
         transform.position = navePos;
     }
 
+    
+
     private void DisparaProyectil()
     {
         if (Input.GetKeyDown("space")) // SI SE PRESIONA ESPACIO 
@@ -72,4 +75,17 @@ public class NuevoJugador : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter2D(Collider2D objecteTocat)
+    {
+        if (objecteTocat.tag == "Numero")
+        {
+            GameObject explocio = Instantiate(prefabExplocion);
+            explocio.transform.position = transform.position;
+            Destroy(gameObject);
+
+        }
+    }
+
+
 }
