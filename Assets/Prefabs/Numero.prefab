@@ -97,3 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96206e855a049204b8d09a1b81254808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arraySpritesNumeros:
+  - {fileID: 21300000, guid: 13b871b18d018834f9940f647ffb740d, type: 3}
+  - {fileID: 21300000, guid: 772c9150a38979343870f0478060cc96, type: 3}
+  - {fileID: 21300000, guid: 1b52803d53ab90142b19f825efcfb9d1, type: 3}
+  - {fileID: 21300000, guid: 95a323454dd9ae146abfa9d81e85753b, type: 3}
+  - {fileID: 21300000, guid: c0bd0104e2adc34498be67b942f922aa, type: 3}
+  - {fileID: 21300000, guid: 8e08ea72c4e4fa442b363ffa7fe99bdc, type: 3}
+  - {fileID: 21300000, guid: b5bf848af174afa43b4f16779209b1cc, type: 3}
+  - {fileID: 21300000, guid: a52751fcf0b6a3943bf4fad5add85cbe, type: 3}
+  - {fileID: 21300000, guid: 5f23ce5e62a424b4fbfc65498f205562, type: 3}
+  - {fileID: 21300000, guid: 6bd9e6d6c7c88c144bada04cfeb76a6d, type: 3}

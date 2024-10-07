@@ -9,16 +9,23 @@ public class GeneradorNumeros : MonoBehaviour
 
 
 
+    private Vector2 minPantalla, maxPantalla;
+
     // Start is called before the first frame update
     void Start()
     {
-        invokeRepeating(mothodeName"GenerarNumero",1f,2f);
+        InvokeRepeating("GenerarNumero", 1f, 2f);
 
+        minPantalla = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+        maxPantalla = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
 
     }
 
     private void GenerarNumero()
     {
+        GameObject  Numero = Instantiate(prefabNum);
+
+        Numero.transform.position = new Vector2(Random.Range(minPantalla.x, maxPantalla.x), maxPantalla.y);
 
     }
 
