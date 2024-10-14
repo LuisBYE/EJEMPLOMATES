@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NuevoJugador : MonoBehaviour
 {
@@ -12,14 +14,20 @@ public class NuevoJugador : MonoBehaviour
     [SerializeField] private GameObject prefabProyectil;
     [SerializeField] private GameObject prefabExplocion;
 
+    [SerializeField] private TMPro.TextMeshProUGUI TextNaveVides;
+
+    private int vidasNave;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-       
+
         _velocidad = 8f;
-      
-        maxPantalla = Camera.main.ViewportToWorldPoint( new Vector2(1, 1));// abajo //izquierda
-        minPantalla = Camera.main.ViewportToWorldPoint( new Vector2(0, 0));// arriba //derecha
+
+        maxPantalla = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));// abajo //izquierda
+        minPantalla = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));// arriba //derecha
 
         float mitatdeimagenX = GetComponent<SpriteRenderer>().sprite.bounds.size.x * transform.localScale.x / 2;
         float mitatdeimagenY = GetComponent<SpriteRenderer>().sprite.bounds.size.x * transform.localScale.y / 2;
@@ -29,11 +37,12 @@ public class NuevoJugador : MonoBehaviour
         minPantalla.y += mitatdeimagenY;
         maxPantalla.y -= mitatdeimagenY;
 
-        
-        
+        vidasNave = 3;
 
-    }
+
     
+}
+
     // Update is called once per frame
     void Update()
     {
@@ -80,10 +89,22 @@ public class NuevoJugador : MonoBehaviour
     {
         if (objecteTocat.tag == "Numero")
         {
-            GameObject explocio = Instantiate(prefabExplocion);
-            explocio.transform.position = transform.position;
-            Destroy(gameObject);
+            vidasNave--;
 
+            TextNaveVides.text = "vidas" + vidasNave.ToString();
+            if (vidasNave == 0)
+            {
+
+                GameObject explocio = Instantiate(prefabExplocion);
+                explocio.transform.position = transform.position;
+                Destroy(gameObject);
+                SceneManager.LoadScene("PantallaResultados");
+
+                
+
+
+
+            }
         }
     }
 

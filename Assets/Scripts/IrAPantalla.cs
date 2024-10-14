@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Explocion : MonoBehaviour
+public class Botoncito : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+
+    public void IrAPantalla()
     {
-        Invoke("DestruirExplicon", 1f); // al 1 segundo utiliza el metodo destruir 
+        SceneManager.LoadScene("PantallaJugando");
     }
 
-    private void DestruirExplicon()//metodo para destruir nave
+
+
+
+    void Start()
     {
-        Destroy(gameObject);
+        
     }
 
     // Update is called once per frame
